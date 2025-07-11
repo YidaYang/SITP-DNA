@@ -11,29 +11,8 @@ try:
 except ImportError:
     print("错误：未找到Evo2库。请确保已正确安装，并且在PYTHONPATH中。")
     print("如果Evo2不是一个标准库，您可能需要将其代码放在与此脚本相同的目录或可访问的路径中。")
-    # 作为占位符，如果Evo2不可用，后续代码会失败
-    class Evo2: # Placeholder
-        def __init__(self, model_name, local_path):
-            print(f"警告: Evo2 实际的类未加载。使用了占位符。 model_name={model_name}, local_path={local_path}")
-            self.tokenizer = self # Placeholder tokenizer
-            self.model = nn.Module() # Placeholder model
-            self.model.config = type('config', (), {'hidden_size': 4096})() # Placeholder config
 
-        def tokenize(self, text): # Placeholder tokenizer method
-            print("警告: 使用了占位符 Evo2.tokenizer.tokenize")
-            return [ord(c) for c in text]
-
-        def __call__(self, input_ids, return_embeddings=False, layer_names=None): # Placeholder call
-            print("警告: 使用了占位符 Evo2.__call__")
-            # 返回一个符合期望结构的模拟输出
-            batch_size, seq_len = input_ids.shape
-            hidden_size = self.model.config.hidden_size
-            # 模拟 embeddings 输出
-            mock_embeddings = {
-                layer_names[0]: torch.randn(batch_size, seq_len, hidden_size, dtype=torch.bfloat16)
-            }
-            return None, mock_embeddings # (logits_placeholder, embeddings)
-
+   
 
 class Evo2ForRegression(nn.Module):
     """
